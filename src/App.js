@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 class App extends Component {
+  onClick() {
+    this.square.animate(
+      [{ transform: "rotate(360deg)" }, { transform: "rotate(0deg)" }],
+      {
+        duration: 5000,
+        iterations: Infinity
+      }
+    );
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="app">
+        <h1>Welcome to my amazing REACT page.</h1>
+        <div
+          className="square"
+          onClick={this.onClick.bind(this)}
+          ref={i => {
+            this.square = i;
+          }}
+        />
       </div>
     );
   }
